@@ -8,7 +8,7 @@ import {
   FlatList,
   Modal,
 } from "react-native";
-//import { uuid } from "react-native-uuid";
+import  uuid  from 'react-native-uuid'
 
 const App = () => {
   const [nuevoTitulodeProducto, setNuevoTitulodeProducto] = useState("");
