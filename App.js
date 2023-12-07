@@ -8,7 +8,7 @@ import {
   FlatList,
   Modal,
 } from "react-native";
-import  uuid  from 'react-native-uuid'
+import uuid from "react-native-uuid";
 
 const App = () => {
   const [nuevoTitulodeProducto, setNuevoTitulodeProducto] = useState("");
@@ -37,49 +37,51 @@ const App = () => {
     );
     setModalVisible(false);
   };
-  return;
-  <View style={styles.container}>
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.input}
-        placeholder="producto"
-        value={nuevoTitulodeProducto}
-        onChangeText={(t) => setNuevoTitulodeProducto(t)}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="agregue su precio  $ "
-        value={nuevoPrecio}
-        onChangeText={(t) => setNuevoPrecio(t)}
-      />
-      <Button title="ADD" onPress={handlerAddProduct} />
-    </View>
-    <View style={styles.listContainer}>
-      <FlatList
-        data={productos}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <View style={styles.cardProduct}>
-            <Text style={styles.cardTitle}>{item.title}</Text>
-            <Text>{item.price} $ </Text>
-            <Button title="DEL" onPress={() => handlerModal(item)} />
-          </View>
-        )}
-      />
-    </View>
-    <Modal visible={modalVisible}>
-      <View style={styles.modalContainer}>
-        <View style={styles.modalContent}>
-          <Text style={styles.modalText}>
-            ¿esta seguro que quiere eliminar el producto?
-          </Text>
-          <Text style={styles.modatText}>{productoElejido.title}</Text>
-          <Button title="Aceptar" onPress={handlerDeleteProduct} />
-          <Button title="Cerrar" onPress={() => setModalVisible(false)} />
-        </View>
+  return (
+    <View style={styles.container}>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="producto"
+          value={nuevoTitulodeProducto}
+          onChangeText={(t) => setNuevoTitulodeProducto(t)}
+        />
+
+        <TextInput
+          style={styles.input}
+          placeholder="agregue su precio  $ "
+          value={nuevoPrecio}
+          onChangeText={(t) => setNuevoPrecio(t)}
+        />
+        <Button title="ADD" onPress={handlerAddProduct} />
       </View>
-    </Modal>
-  </View>;
+      <View style={styles.listContainer}>
+        <FlatList
+          data={productos}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <View style={styles.cardProduct}>
+              <Text style={styles.cardTitle}>{item.title}</Text>
+              <Text>{item.price} $ </Text>
+              <Button title="DEL" onPress={() => handlerModal(item)} />
+            </View>
+          )}
+        />
+      </View>
+      <Modal visible={modalVisible}>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalText}>
+              ¿esta seguro que quiere eliminar el producto?
+            </Text>
+            <Text style={styles.modatText}>{productoElejido.title}</Text>
+            <Button title="Aceptar" onPress={handlerDeleteProduct} />
+            <Button title="Cerrar" onPress={() => setModalVisible(false)} />
+          </View>
+        </View>
+      </Modal>
+    </View>
+  );
 };
 
 //Sección de estilos de página
@@ -105,6 +107,7 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     width: "100%",
+    backgroundColor: "yellow",
   },
   cardProduct: {
     flexDirection: "row",
